@@ -1,0 +1,365 @@
+apiVersion: v1
+entries:
+  apm-server:
+  - apiVersion: v1
+    appVersion: 8.5.1
+    created: "2025-04-23T11:39:18.1071679+02:00"
+    description: Official Elastic helm chart for Elastic APM Server
+    digest: 1980ec335fc86ca72a4a38439f736a1f837005dd0e7948e089e007066c95d868
+    home: https://github.com/elastic/helm-charts
+    icon: https://helm.elastic.co/icons/apm.png
+    maintainers:
+    - email: helm-charts@elastic.co
+      name: Elastic
+    name: apm-server
+    sources:
+    - https://github.com/elastic/apm
+    urls:
+    - charts/apm-server-8.5.1.tgz
+    version: 8.5.1
+  arangodb:
+  - apiVersion: v2
+    created: "2025-04-23T11:39:18.1081491+02:00"
+    digest: 366b943e1115c41f0a3a98c002f47ef5f58e84f553b75068ca38d22b7a573a46
+    name: arangodb
+    urls:
+    - charts/arangodb-1.0.0.tgz
+    version: 1.0.0
+  arangodb-ingress-proxy:
+  - apiVersion: v1
+    created: "2025-04-23T11:39:18.116462+02:00"
+    description: ArangoDB Ingress Proxy
+    digest: 30c0464537077e867061e3002fa7f1b236d331b1aee0d406390daf2ff1f23d91
+    name: arangodb-ingress-proxy
+    urls:
+    - charts/arangodb-ingress-proxy-1.0.0.tgz
+    version: 1.0.0
+  elasticsearch:
+  - apiVersion: v1
+    appVersion: 8.5.1
+    created: "2025-04-23T11:39:18.1187899+02:00"
+    description: Official Elastic helm chart for Elasticsearch
+    digest: dcfcee5d226c321972943805c6ab29a627e641fcf1df7d535722dd150009016a
+    home: https://github.com/elastic/helm-charts
+    icon: https://helm.elastic.co/icons/elasticsearch.png
+    maintainers:
+    - email: helm-charts@elastic.co
+      name: Elastic
+    name: elasticsearch
+    sources:
+    - https://github.com/elastic/elasticsearch
+    urls:
+    - charts/elasticsearch-8.5.1.tgz
+    version: 8.5.1
+  grafana:
+  - annotations:
+      artifacthub.io/license: AGPL-3.0-only
+      artifacthub.io/links: |
+        - name: Chart Source
+          url: https://github.com/grafana/helm-charts
+        - name: Upstream Project
+          url: https://github.com/grafana/grafana
+    apiVersion: v2
+    appVersion: 10.0.3
+    created: "2025-04-23T11:39:18.1216609+02:00"
+    description: The leading tool for querying and visualizing time series and metrics.
+    digest: 506c507413b79fe09a0c639ba0a4189330ed40ddd355be1c48d0d3011bf42e25
+    home: https://grafana.net
+    icon: https://raw.githubusercontent.com/grafana/grafana/master/public/img/logo_transparent_400x.png
+    keywords:
+    - monitoring
+    - metric
+    kubeVersion: ^1.8.0-0
+    maintainers:
+    - email: zanhsieh@gmail.com
+      name: zanhsieh
+    - email: rluckie@cisco.com
+      name: rtluckie
+    - email: maor.friedman@redhat.com
+      name: maorfr
+    - email: miroslav.hadzhiev@gmail.com
+      name: Xtigyro
+    - email: mail@torstenwalter.de
+      name: torstenwalter
+    name: grafana
+    sources:
+    - https://github.com/grafana/grafana
+    - https://github.com/grafana/helm-charts
+    type: application
+    urls:
+    - charts/grafana-6.58.8.tgz
+    version: 6.58.8
+  infra-chart:
+  - apiVersion: v2
+    created: "2025-04-23T11:39:18.1217983+02:00"
+    description: A Helm chart for installing infrastructure components for the FRMS
+      system.
+    digest: 33bd6ac053a79895db479574988a9dcc6d761da5c32de0e096c88023808b64c6
+    name: infra-chart
+    type: application
+    urls:
+    - charts/infra-chart-1.0.0.tgz
+    version: 1.0.0
+  ingress-nginx:
+  - annotations:
+      artifacthub.io/changes: |-
+        - "update web hook cert gen to latest release v20231226-1a7112e06"
+        - "Update Ingress-Nginx version controller-v1.9.6"
+      artifacthub.io/prerelease: "false"
+    apiVersion: v2
+    appVersion: 1.9.6
+    created: "2025-04-23T11:39:18.1257378+02:00"
+    description: Ingress controller for Kubernetes using NGINX as a reverse proxy
+      and load balancer
+    digest: 5b5adac2c66802af1b13f3cbe515d785cdbe2dd149d90d3cf5609534c0e96bb8
+    home: https://github.com/kubernetes/ingress-nginx
+    icon: https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Nginx_logo.svg/500px-Nginx_logo.svg.png
+    keywords:
+    - ingress
+    - nginx
+    kubeVersion: '>=1.20.0-0'
+    maintainers:
+    - name: rikatz
+    - name: strongjz
+    - name: tao12345666333
+    name: ingress-nginx
+    sources:
+    - https://github.com/kubernetes/ingress-nginx
+    urls:
+    - charts/ingress-nginx-4.9.1.tgz
+    version: 4.9.1
+  jenkins:
+  - annotations:
+      artifacthub.io/category: integration-delivery
+      artifacthub.io/changes: |
+        - Update `docker.io/kiwigrid/k8s-sidecar` to version `docker.io/kiwigrid/k8s-sidecar`
+      artifacthub.io/images: |
+        - name: jenkins
+          image: docker.io/jenkins/jenkins:2.426.3-jdk17
+        - name: k8s-sidecar
+          image: docker.io/kiwigrid/k8s-sidecar:1.25.4
+        - name: inbound-agent
+          image: jenkins/inbound-agent:3206.vb_15dcf73f6a_9-3
+      artifacthub.io/license: Apache-2.0
+      artifacthub.io/links: |
+        - name: Chart Source
+          url: https://github.com/jenkinsci/helm-charts/tree/main/charts/jenkins
+        - name: Jenkins
+          url: https://www.jenkins.io/
+        - name: support
+          url: https://github.com/jenkinsci/helm-charts/issues
+    apiVersion: v2
+    appVersion: 2.426.3
+    created: "2025-04-23T11:39:18.1280027+02:00"
+    description: Jenkins - Build great things at any scale! The leading open source
+      automation server, Jenkins provides over 1800 plugins to support building, deploying
+      and automating any project.
+    digest: 50512ce0466c65aa4ff4e2b35774b372fb5d3131c46caf0dde2b5239e0b82a8b
+    home: https://jenkins.io/
+    icon: https://get.jenkins.io/art/jenkins-logo/logo.svg
+    keywords:
+    - jenkins
+    - ci
+    - devops
+    maintainers:
+    - email: maor.friedman@redhat.com
+      name: maorfr
+    - email: mail@torstenwalter.de
+      name: torstenwalter
+    - email: garridomota@gmail.com
+      name: mogaal
+    - email: wmcdona89@gmail.com
+      name: wmcdona89
+    - email: timjacomb1@gmail.com
+      name: timja
+    name: jenkins
+    sources:
+    - https://github.com/jenkinsci/jenkins
+    - https://github.com/jenkinsci/docker-inbound-agent
+    - https://github.com/maorfr/kube-tasks
+    - https://github.com/jenkinsci/configuration-as-code-plugin
+    urls:
+    - charts/jenkins-5.0.13.tgz
+    version: 5.0.13
+  keycloak:
+  - annotations:
+      category: DeveloperTools
+      images: |
+        - name: keycloak-config-cli
+          image: docker.io/bitnami/keycloak-config-cli:5.10.0-debian-11-r0
+        - name: keycloak
+          image: docker.io/bitnami/keycloak:23.0.3-debian-11-r0
+      licenses: Apache-2.0
+    apiVersion: v2
+    appVersion: 23.0.3
+    created: "2025-04-23T11:39:18.1351453+02:00"
+    dependencies:
+    - condition: postgresql.enabled
+      name: postgresql
+      repository: oci://registry-1.docker.io/bitnamicharts
+      version: 13.x.x
+    - name: common
+      repository: oci://registry-1.docker.io/bitnamicharts
+      tags:
+      - bitnami-common
+      version: 2.x.x
+    description: Keycloak is a high performance Java-based identity and access management
+      solution. It lets developers add an authentication layer to their applications
+      with minimum effort.
+    digest: bb64a22f5947fc7ba253e9d6f3ebe90694538ac5a63f1291726d0ca37ad53dbb
+    home: https://bitnami.com
+    icon: https://bitnami.com/assets/stacks/keycloak/img/keycloak-stack-220x234.png
+    keywords:
+    - keycloak
+    - access-management
+    maintainers:
+    - name: VMware, Inc.
+      url: https://github.com/bitnami/charts
+    name: keycloak
+    sources:
+    - https://github.com/bitnami/charts/tree/main/bitnami/keycloak
+    urls:
+    - charts/keycloak-18.0.0.tgz
+    version: 18.0.0
+  kibana:
+  - apiVersion: v1
+    appVersion: 8.5.1
+    created: "2025-04-23T11:39:18.1367847+02:00"
+    description: Official Elastic helm chart for Kibana
+    digest: 275ba6b29d1e51dd4f9098eee2dc852de44f563618f8f92c633f7296e74f45f0
+    home: https://github.com/elastic/helm-charts
+    icon: https://helm.elastic.co/icons/kibana.png
+    maintainers:
+    - email: helm-charts@elastic.co
+      name: Elastic
+    name: kibana
+    sources:
+    - https://github.com/elastic/kibana
+    urls:
+    - charts/kibana-8.5.1.tgz
+    version: 8.5.1
+  logstash:
+  - apiVersion: v1
+    appVersion: 8.5.1
+    created: "2025-04-23T11:39:18.137933+02:00"
+    description: Official Elastic helm chart for Logstash
+    digest: a2bdffd58eb16d88de4945d120d97a35c0ef0993090e369bd2248a8298a971f4
+    home: https://github.com/elastic/helm-charts
+    icon: https://helm.elastic.co/icons/logstash.png
+    maintainers:
+    - email: helm-charts@elastic.co
+      name: Elastic
+    name: logstash
+    sources:
+    - https://github.com/elastic/logstash
+    urls:
+    - charts/logstash-8.5.1.tgz
+    version: 8.5.1
+  nats:
+  - apiVersion: v2
+    appVersion: 2.9.19
+    created: "2025-04-23T11:39:18.139074+02:00"
+    description: A Helm chart for the NATS.io High Speed Cloud Native Distributed
+      Communications Technology.
+    digest: 5cfe41e6a04cfb24812d88d98af2c7a5b908f95932b32e2888e435d605e01142
+    home: http://github.com/nats-io/k8s
+    icon: https://nats.io/img/nats-icon-color.png
+    keywords:
+    - nats
+    - messaging
+    - cncf
+    maintainers:
+    - email: info@nats.io
+      name: The NATS Authors
+      url: https://github.com/nats-io
+    name: nats
+    urls:
+    - charts/nats-0.19.16.tgz
+    version: 0.19.16
+  prometheus:
+  - annotations:
+      artifacthub.io/license: Apache-2.0
+      artifacthub.io/links: |
+        - name: Chart Source
+          url: https://github.com/prometheus-community/helm-charts
+        - name: Upstream Project
+          url: https://github.com/prometheus/prometheus
+    apiVersion: v2
+    appVersion: v2.46.0
+    created: "2025-04-23T11:39:18.1442099+02:00"
+    dependencies:
+    - condition: alertmanager.enabled
+      name: alertmanager
+      repository: https://prometheus-community.github.io/helm-charts
+      version: 0.33.*
+    - condition: kube-state-metrics.enabled
+      name: kube-state-metrics
+      repository: https://prometheus-community.github.io/helm-charts
+      version: 5.10.*
+    - condition: prometheus-node-exporter.enabled
+      name: prometheus-node-exporter
+      repository: https://prometheus-community.github.io/helm-charts
+      version: 4.21.*
+    - condition: prometheus-pushgateway.enabled
+      name: prometheus-pushgateway
+      repository: https://prometheus-community.github.io/helm-charts
+      version: 2.4.*
+    description: Prometheus is a monitoring system and time series database.
+    digest: 330a2cc5baa6640020cb5e3555374df02a6427d2ac7ffb29de275517c011c28e
+    home: https://prometheus.io/
+    icon: https://raw.githubusercontent.com/prometheus/prometheus.github.io/master/assets/prometheus_logo-cb55bb5c346.png
+    keywords:
+    - monitoring
+    - prometheus
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: gianrubio@gmail.com
+      name: gianrubio
+    - email: zanhsieh@gmail.com
+      name: zanhsieh
+    - email: miroslav.hadzhiev@gmail.com
+      name: Xtigyro
+    - email: naseem@transit.app
+      name: naseemkullah
+    - email: rootsandtrees@posteo.de
+      name: zeritti
+    name: prometheus
+    sources:
+    - https://github.com/prometheus/alertmanager
+    - https://github.com/prometheus/prometheus
+    - https://github.com/prometheus/pushgateway
+    - https://github.com/prometheus/node_exporter
+    - https://github.com/kubernetes/kube-state-metrics
+    type: application
+    urls:
+    - charts/prometheus-23.2.0.tgz
+    version: 23.2.0
+  vault:
+  - annotations:
+      charts.openshift.io/name: HashiCorp Vault
+    apiVersion: v2
+    appVersion: 1.13.1
+    created: "2025-04-23T11:39:18.1458622+02:00"
+    description: Official HashiCorp Vault Chart
+    digest: 600bd4a79ce0010385059fe9dd49275204925b7f0e3df1c290eaff7819605b34
+    home: https://www.vaultproject.io
+    icon: https://github.com/hashicorp/vault/raw/f22d202cde2018f9455dec755118a9b84586e082/Vault_PrimaryLogo_Black.png
+    keywords:
+    - vault
+    - security
+    - encryption
+    - secrets
+    - management
+    - automation
+    - infrastructure
+    kubeVersion: '>= 1.22.0-0'
+    name: vault
+    sources:
+    - https://github.com/hashicorp/vault
+    - https://github.com/hashicorp/vault-helm
+    - https://github.com/hashicorp/vault-k8s
+    - https://github.com/hashicorp/vault-csi-provider
+    urls:
+    - charts/vault-0.24.0.tgz
+    version: 0.24.0
+generated: "2025-04-23T11:39:18.097132+02:00"
