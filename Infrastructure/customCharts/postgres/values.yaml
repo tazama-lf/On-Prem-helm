@@ -1,0 +1,17 @@
+# SPDX-License-Identifier: Apache-2.0
+image:
+  repository: postgres
+  tag: latest
+  pullPolicy: IfNotPresent
+  
+postgres:
+  user:
+  password:
+  replicas: 1
+  storage:
+    size: 15Gi
+    class: standard
+
+service:
+  type: ClusterIP
+  port: 5432

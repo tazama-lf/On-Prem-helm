@@ -1,0 +1,39 @@
+# SPDX-License-Identifier: Apache-2.0
+
+# file: deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pgadmin
+  namespace: default
+  labels:
+    app.kubernetes.io/instance: pgadmin
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/name: pgadmin
+spec:
+  replicas: {{ .Values.pgadmin.replicas }}
+  selector:
+    matchLabels:
+      app: pgadmin
+  template:
+    metadata:
+      labels:
+        app: pgadmin
+    spec:
+      containers:
+        - name: pgadmin
+          image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          env:
+            - name: PGADMIN_DEFAULT_EMAIL
+              value: {{ .Values.pgadmin.email }}
+            - name: PGADMIN_DEFAULT_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.pgadmin.existingSecret }}
+                  key: {{ .Values.pgadmin.secretKey }}
+          ports:
+            - containerPort: {{ .Values.service.port }}
+
+
+

@@ -1,0 +1,23 @@
+# SPDX-License-Identifier: Apache-2.0
+
+# file: pvc.yaml
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: postgres-pvc
+  namespace: default
+  labels:
+    app.kubernetes.io/instance: postgres
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/name: postgres
+spec:
+  storageClassName: {{ .Values.postgres.storage.class }}
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: {{ .Values.postgres.storage.size }}
+  capacity:
+    storage: {{ .Values.postgres.storage.size }}
+  # hostPath:
+  #   path: "/mnt/data"

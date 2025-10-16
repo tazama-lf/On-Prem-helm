@@ -1,0 +1,73 @@
+# values.yaml
+pgadmin:
+  image:
+    repository: dpage/pgadmin4
+    tag: 'latest'
+    pullPolicy: IfNotPresent
+
+  pgadmin:
+    email: admin@tazama.com
+    existingSecret: pgadmin # references a Secret containing PGADMIN_DEFAULT_PASSWORD
+    secretKey: pgadmin-password # the key inside the secret
+    replicas: 1
+
+  # pgAdmin server configurations
+  serverDefinitions:
+      # Enable/disable server import
+      enabled: true
+
+      # Storage for the server JSON:
+      #   ConfigMap - plain text (good for non-secret data)
+      #   Secret    - base-64 (better for credentials)
+      resourceType: ConfigMap
+
+      # Use this only when `resourceType` = ConfigMap - point to an existing ConfigMap
+      # that already holds your `servers.json`
+      existingConfigmap: "pgadmin-servers"
+
+      # Use this only when `resourceType` = Secret - point to an existing Secret
+      # that already holds your `servers.json`.
+      existingSecret: ""
+
+      # Set to true to put raw JSON under `stringData` (handy for dry-runs/debug).
+      # Leave false to keep the default base-64 in `data`.
+      useStringData: false
+
+      # Inline server definitions (ignore if you point to an existing resource)
+      # You can use Helm templates here, e.g. Host: "{{ .Values.example.host }}"
+      servers:
+        firstServer:
+          name: 'Tazama'
+          host: postgres
+          port: 5432
+          username: postgres
+          existingSecret: postgres 
+          secretKey: admin-password
+          dbName: postgres
+
+  ingress:
+    enabled: false
+    annotations: {}
+    hosts:
+      - host: pgadmin.local
+        paths:
+          - /
+
+  resources:
+    limits:
+      cpu: 250m
+      memory: 512Mi
+    requests:
+      cpu: 100m
+      memory: 256Mi
+
+  service:
+    type: ClusterIP
+    port: 80
+
+  postgres:
+    user: postgres
+    passwordSecret: 
+      name: postgres
+      key: admin-password
+    db: Tazama
