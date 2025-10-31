@@ -200,28 +200,38 @@ The same reasoning applies to passwords are that explicitly stated to need a sin
   - **value:** true / false
 - `ArtifactRegistryZone`: A variable used for the gcloud cli.
   - **eg:** us-central1-docker
-- `ArangoPassword`: A secret password required for accessing the Database which is used for populating the Arango configuration.
+- `configDbPassword`: A secret password required for accessing the Database which is used for populating the configuration.
   - **eg:** rm]ukXyA@M
-- `ArangoConfigurationURL`: Endpoint for the ArangoDB configuration Database.
-  - **value:** [http://arango.development.svc.cluster.local:8529](http://arango.development.svc.cluster.local:8529)
-- `ArangoConfigurationPassword`: A secret password required for accessing the Database. **NB:** The single quotes need to be added with your password.
-  - **eg:** 'rm]ukXyA@M'
-- `ArangoDbURL`: Endpoint for the ArangoDB configuration Database.
-  - **value:** [http://arango.development.svc.cluster.local:8529](http://arango.development.svc.cluster.local:8529)
-- `ArangoDbPassword`: A secret password required for accessing the Database. **NB:** The single quotes need to be added with your password.
-  - **eg:** 'rm]ukXyA@M'
-- `ArangoPseudonymsURL`: Endpoint for the ArangoDB pseudonym Database.
-  - **value:** [http://arango.development.svc.cluster.local:8529](http://arango.development.svc.cluster.local:8529)
-- `ArangoPseudonymsPassword`: A secret password required for accessing the Database. **NB:** The single quotes need to be added with your password.
-  - **eg:** 'rm\]ukXyA@M'
-- `ArangoTransactionHistoryURL`: Endpoint for the ArangoDB transaction history Database.
-  - **value:** [http://arango.development.svc.cluster.local:8529](http://arango.development.svc.cluster.local:8529)
-- `ArangoTransactionHistoryPassword`: A secret password required for accessing the Database. **NB:** The single quotes need to be added with your password.
-  - **eg:** 'rm\]ukXyA@M'
-- `ArangoEvaluationURL`: Endpoint for the ArangoDB Evalation Database.
-  - **value:** [http://arango.development.svc.cluster.local:8529](http://arango.development.svc.cluster.local:8529)
-- `ArangoEvaluationPassword`: A secret password required for accessing the Database. **NB:** The single quotes need to be added with your password.
-  - **eg:** 'rm\]ukXyA@M'
+- `configDbHost`: Endpoint for the configuration Database.
+  - **value:** [http://postgres.development.svc.cluster.local](http://postgres.development.svc.cluster.local)
+- `configDbUser`: The user used to access the Database.
+  - **eg:** 'admin'
+- `configDbPort`: Port for the configuration database
+  - **value:** '5432'
+- `evalDbPassword`: A secret password required for accessing the Database which is used for populating the evaluation.
+  - **eg:** rm]ukXyA@M
+- `evalDbHost`: Endpoint for the evaluation Database.
+  - **value:** [http://postgres.development.svc.cluster.local](http://postgres.development.svc.cluster.local)
+- `evalDbUser`: The user used to access the Database.
+  - **eg:** 'admin'
+- `evalDbPort`: Port for the configuration database
+  - **value:** '5432'
+- `rawHisDbPassword`: A secret password required for accessing the Database which is used for populating the Raw History Database.
+  - **eg:** rm]ukXyA@M
+- `rawHisDbHost`: Endpoint for the configuration Database.
+  - **value:** [http://postgres.development.svc.cluster.local](http://postgres.development.svc.cluster.local)
+- `rawHisDbUser`: The user used to access the Database.
+  - **eg:** 'admin'
+- `rawHisDbPort`: Port for the configuration database
+  - **value:** '5432'
+- `eventHisDbPassword`: A secret password required for accessing the Database which is used for populating the configuration.
+  - **eg:** rm]ukXyA@M
+- `eventHisDbHost`: Endpoint for the configuration Database.
+  - **value:** [http://postgres.development.svc.cluster.local](http://postgres.development.svc.cluster.local)
+- `eventHisDbUser`: The user used to access the Database.
+  - **eg:** 'admin'
+- `eventHisDbPort`: Port for the configuration database
+  - **value:** '5432'
 - `Branch`: The specific branch in source control that the deployment should target.
   - **value:** main
 - `CacheEnabled`: A flag to enable or disable caching.
@@ -240,7 +250,7 @@ The same reasoning applies to passwords are that explicitly stated to need a sin
   - **value:** false
 - `FLUSHBYTES`: The byte threshold for flushing data.
   - **value:** 10
-- `ImageRepository`: The repository for Docker images.
+- `ImageRepository`: The  for Docker images.
   - **eg:** [example.io](http://example.io)
 - `LogLevel`: The verbosity level of logging. **NB:** The single quotes need to be added in.
   - eg: 'info', 'error', 'silent', etc…
@@ -251,7 +261,7 @@ The same reasoning applies to passwords are that explicitly stated to need a sin
 - `NATS_SERVER_URL`: The URL for the NATS server.
   - **value:** nats.development.svc.cluster.local:4222
 - `RedisCluster`: A flag to indicate if Redis is running in cluster mode.
-  - **value:** true
+  - **value:** false
 - `RedisPassword`: The password for accessing Redis.
   - **eg:** ty6r5\*&p0
 - `RedisServers`: The hostname for the Redis Cluster service. **NB:** The single quotes need to be added in to the host string.

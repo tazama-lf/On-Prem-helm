@@ -17,7 +17,3 @@ spec:
   resources:
     requests:
       storage: {{ .Values.postgres.storage.size }}
-  capacity:
-    storage: {{ .Values.postgres.storage.size }}
-  # hostPath:
-  #   path: "/mnt/data"

@@ -27,3 +27,6 @@ tazama:
 
   keycloak:
     enabled: false
+
+  valkey:
+    enable: true

@@ -57,7 +57,7 @@ helm repo update
 and 
 
 ```bash
-helm repo build
+helm dependency build
 ```
 
 This will pull all the helm charts required and create a "/charts" repository.

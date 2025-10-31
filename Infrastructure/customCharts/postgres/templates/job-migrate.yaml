@@ -1,0 +1,42 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: postgres-migrate
+  namespace: default
+  annotations:
+    "helm.sh/hook": post-install,post-upgrade
+    "helm.sh/hook-delete-policy": before-hook-creation,hook-succeeded
+spec:
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+        - name: migrate
+          image: postgres:16
+          env:
+            - name: PGPASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: postgres
+                  key: admin-password
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: postgres
+                  key: admin-password
+          command: ["psql"]
+          args:
+            [
+              "-h","postgres",
+              "-U","postgres",
+              "-d","postgres",
+              "-v","ON_ERROR_STOP=1",
+              "-f","/work/01_migrate.sql"
+            ]
+          volumeMounts:
+            - name: migrate-sql
+              mountPath: /work
+      volumes:
+        - name: migrate-sql
+          configMap:
+            name: postgres-migrate-sql
