@@ -24,19 +24,38 @@ spec:
                 secretKeyRef:
                   name: postgres
                   key: admin-password
-          command: ["psql"]
+          command: ["/bin/bash", "-c"]
           args:
-            [
-              "-h","postgres",
-              "-U","postgres",
-              "-d","postgres",
-              "-v","ON_ERROR_STOP=1",
-              "-f","/work/01_migrate.sql"
-            ]
+            - |
+              set -euo pipefail
+
+              echo "Starting migrations..."
+
+              for f in /work/*.sql; do
+                [ -e "$f" ] || { echo "No .sql files found in /work"; exit 0; }
+                echo "Running migration: $f"
+                psql \
+                  -h postgres \
+                  -U postgres \
+                  -d postgres \
+                  -v ON_ERROR_STOP=1 \
+                  -f "$f"
+              done
+
+              echo "Migrations complete."
           volumeMounts:
             - name: migrate-sql
               mountPath: /work
+            - name: rls
+              mountPath: /tmp/rls.sql
+              subPath: rls.sql
       volumes:
         - name: migrate-sql
           configMap:
             name: postgres-migrate-sql
+        - name: rls
+          configMap:
+            name: rls-config-sql
+            items:
+              - key: rls.sql
+                path: rls.sql
