@@ -1,0 +1,32 @@
+# SPDX-License-Identifier: Apache-2.0
+
+global:
+  nameOverride: Sub-Chart
+
+tazama:
+  jenkins:
+    enabled: true
+
+  nats:
+    enabled: true
+
+  elasticsearch:
+    enabled: true
+
+  prometheus:
+    enabled: false
+
+  kibana:
+    enabled: false
+
+  grafana:
+    enabled: false
+
+  apm-server:
+    enabled: true
+
+  keycloak:
+    enabled: false
+
+  valkey:
+    enable: true

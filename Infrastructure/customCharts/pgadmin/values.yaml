@@ -1,0 +1,49 @@
+# values.yaml
+
+image:
+  repository: dpage/pgadmin4
+  tag: 'latest'
+  pullPolicy: IfNotPresent
+
+pgadmin:
+  email: admin@tazama.com
+  existingSecret: pgadmin # references a Secret containing PGADMIN_DEFAULT_PASSWORD
+  secretKey: pgadmin-password # the key inside the secret
+  replicas: 1
+
+# pgAdmin server configurations
+servers:
+  name: 'Tazama'
+  host: postgres
+  port: 5432
+  username: postgres
+  existingSecret: postgres 
+  secretKey: admin-password
+  dbName: postgres
+
+ingress:
+  enabled: false
+  annotations: {}
+  hosts:
+    - host: pgadmin.local
+      paths:
+        - /
+
+resources:
+  limits:
+    cpu: 250m
+    memory: 512Mi
+  requests:
+    cpu: 100m
+    memory: 256Mi
+
+service:
+  type: ClusterIP
+  port: 80
+
+postgres:
+  user: postgres
+  passwordSecret: 
+    name: postgres
+    key: admin-password
+  db: Tazama

@@ -1,0 +1,25 @@
+# SPDX-License-Identifier: Apache-2.0
+postgres:
+# file: values.yaml
+  image:
+    repository: postgres
+    tag: latest
+    pullPolicy: IfNotPresent
+    
+  postgres:
+    user:
+    password:
+    replicas: 1
+    storage:
+      size: 15Gi
+      class: standard
+
+  service:
+    type: ClusterIP
+    port: 5432
+    # single:
+    #   enabled: true
+    #   imagePullPolicy: IfNotPresent
+    #   image: arangodb/arangodb
+    #   version: latest
+    #   servicePort: 8529
